@@ -117,6 +117,13 @@ namespace System
                 Clear();
         }
 
+        void Tab(int size)
+        {
+            for (int i = 0; i < size; i++)
+                if (++TermCol == VGA::VGAWidth)
+                    Newline();
+        }
+
         void TermPutChar(char c)
         {
             switch (c)
@@ -127,6 +134,9 @@ namespace System
             case '\r':
                 CarriageReturn();
                 break;
+            case '\t':
+                Tab(4);
+            break;
             default:
                 TermPutEntryAt(c, TermColor, TermCol, TermRow);
                 if (++TermCol == VGA::VGAWidth)
@@ -149,5 +159,5 @@ namespace System
 extern "C" void vienna(void)
 {
     System::Terminal::TermInit();
-    System::Terminal::TermWrite("i love men\nand children\ncarriagereturn\r123\n");
+    System::Terminal::TermWrite("1st row\n2nd row\n3rd row\ncarriagereturnhere\r69\nca\nt\ta\tb");
 }
