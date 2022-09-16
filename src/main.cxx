@@ -150,5 +150,4 @@ extern "C" void vienna(void)
 {
     System::Terminal::TermInit();
     System::Terminal::TermWrite("i love men\nand children\ncarriagereturn\r123\n");
-    System::Terminal::TermWrite(pallihiki);
 }
